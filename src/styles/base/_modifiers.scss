@@ -1,0 +1,18 @@
+.is-flex {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.is-flex-center {
+  @extend .is-flex;
+  justify-content: center;
+}
+
+.is-bg-white {
+  background: $white-color;
+}
+
+.has-navbar {
+  margin-top: 4.25rem;
+}

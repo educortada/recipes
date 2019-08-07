@@ -1,0 +1,26 @@
+// Font
+$font-stack: "Open Sans", sans-serif;
+
+// Colors
+$white-color: #ffffff;
+$text-color: #555555;
+$primary-color: #2eb0a8;
+$secondary-color: #943ffa;
+$gray-color-01: #878787;
+// $gray-color-02: #cccccc;
+// $gray-color-03: #dddddd;
+$gray-color-04: #efefef;
+// $favorite-color: #fd6c67;
+
+// Box shadows
+$box-shadow-light: 0 3px 8px rgba(0, 0, 0, 0.05);
+$box-shadow-dark: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+//Utilities
+$default-radius: 8px;
+$transition: all 0.2s ease;
+
+// Media queries
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$desktop-wide-width: 1280px;

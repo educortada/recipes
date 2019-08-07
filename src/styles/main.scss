@@ -1,0 +1,18 @@
+// Base
+@import "./base/_variables.scss";
+@import "./base/_reset.scss";
+
+// Components
+// @import "./components/_navbar.scss";
+// @import "./components/_favorite.scss";
+// @import "./components/_button.scss";
+@import "./components/spinner.scss";
+@import "./components/_card.scss";
+// @import "./components/_search.scss";
+// @import "./components/_movie.scss";
+
+// Layout
+@import "./layout/_layout.scss";
+
+// Mofifiers
+@import "./base/modifiers.scss";

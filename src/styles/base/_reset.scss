@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+textarea,
+hr,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $text-color;
+  background: $gray-color-04;
+  font-family: $font-stack;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+button {
+  color: $white-color;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button,
+input:focus {
+  outline: 0;
+}

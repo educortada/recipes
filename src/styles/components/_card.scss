@@ -1,0 +1,48 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-basis: calc(100% - 1rem);
+  margin: 1rem 0.5rem;
+  background-color: $white-color;
+  border-radius: $default-radius;
+  box-shadow: $box-shadow-light;
+  transition: $transition;
+
+  &-img {
+    width: 100%;
+    border-radius: $default-radius $default-radius 0 0;
+  }
+
+  &-info {
+    padding: 1rem;
+  }
+
+  &-title {
+    padding-bottom: 0.5rem;
+  }
+
+  &-ingredients {
+    color: $gray-color-01;
+    font-style: italic;
+    padding-bottom: 1rem;
+  }
+
+  &:hover {
+    box-shadow: $box-shadow-dark;
+    transform: translateY(-4px);
+  }
+
+  @media (min-width: $tablet-width) {
+    flex-basis: calc(50% - 1rem);
+  }
+
+  @media (min-width: $desktop-width) {
+    flex-basis: calc(25% - 1rem);
+  }
+
+  @media (min-width: $desktop-wide-width) {
+    flex-basis: calc(20% - 1rem);
+  }
+}
