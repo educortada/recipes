@@ -20,12 +20,12 @@
   }
 
   &-title {
+    color: $text-color;
     padding-bottom: 0.5rem;
   }
 
   &-ingredients {
     color: $gray-color-01;
-    font-style: italic;
     padding-bottom: 1rem;
   }
 

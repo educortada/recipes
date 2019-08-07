@@ -4,15 +4,21 @@ import { IS_LOADING, IS_READY, HAS_ERROR } from '../constants/index'
 // Components
 import Card from './Card'
 
-const List = ({ status, popularRecipes }) => {
+const List = ({ status, isSearchActive, popularRecipes, search }) => {
   const renderList = () => {
-    const recipes = popularRecipes // TODO: Change when have search result
+    const recipes = isSearchActive ? search : popularRecipes
+    // Recipes with empty result.
+    if (!recipes.length) {
+      return <h3>No results!</h3>
+    }
+    // Render search or popular recipes.
     return recipes.map(recipe => (
       <Card
         recipe={recipe}
       />
     ))
   }
+
   switch (status) {
     case IS_LOADING:
       return (
@@ -23,6 +29,9 @@ const List = ({ status, popularRecipes }) => {
     case IS_READY:
       return (
         <section className="container is-flex-center">
+          {!isSearchActive && (
+            <h3 className="container-title">Popular recipes</h3>
+          )}
           <div className="is-flex">
             {renderList()}
           </div>

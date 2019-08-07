@@ -9,6 +9,9 @@ import Home from './pages/Home'
 // CSS
 import './styles/main.scss'
 
+// Font Awesome
+import '@fortawesome/fontawesome-free/css/all.css'
+
 const App = () => {
   return (
     <Switch>

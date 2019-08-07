@@ -1,0 +1,65 @@
+.search {
+  position: relative;
+  padding: 1rem 0.5rem;
+  &-input {
+    width: 100%;
+    flex-basis: calc(100% - 120px);
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 0;
+    border-radius: $default-radius 0 0 $default-radius;
+    font-family: $font-stack;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color;
+    background: $gray-color-04;
+
+    @media (min-width: $tablet-width) {
+      flex-basis: calc(100% - 140px);
+    }
+  }
+
+  &-button {
+    flex-basis: 120px;
+    padding: 0.75rem 1.25rem;
+    border: 0;
+    border-radius: 0 $default-radius $default-radius 0;
+    font-family: $font-stack;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $white-color;
+    background: $primary-color;
+    transition: $transition;
+
+    @media (min-width: $tablet-width) {
+      flex-basis: 140px;
+      &:hover {
+        background: darken($primary-color, 4%);
+      }
+    }
+  }
+
+  &-reset {
+    position: absolute;
+    font-size: 1.25rem;
+    color: $gray-color-01;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 140px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+
+    @media (min-width: $tablet-width) {
+      right: 160px;
+    }
+  }
+
+  .fa-search {
+    position: absolute;
+    font-size: 1.25rem;
+    color: $gray-color-01;
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+  }
+}

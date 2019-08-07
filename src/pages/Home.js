@@ -4,11 +4,14 @@ import recipeService from '../services/recipeService'
 
 // Components
 import List from '../components/List'
+import SearchContainer from '../containers/SearchContainer'
 
 class Home extends Component {
   state = {
     status: IS_LOADING,
-    popularRecipes: []
+    popularRecipes: [],
+    search: [],
+    isSearchActive: false
   }
 
   componentDidMount = async () => {
@@ -26,13 +29,25 @@ class Home extends Component {
   }
 
   render () {
-    const { status, popularRecipes } = this.state
+    const {
+      isSearchActive,
+      popularRecipes,
+      search,
+      status
+    } = this.state
     return (
       <>
         <main>
+          <SearchContainer
+            handleStatus={(status) => { this.setState({ status }) }}
+            handleSearch={(search) => { this.setState({ search }) }}
+            handleSearchActive={(isSearchActive) => { this.setState({ isSearchActive }) }}
+          />
           <List
-            status={status}
+            isSearchActive={isSearchActive}
             popularRecipes={popularRecipes}
+            search={search}
+            status={status}
           />
         </main>
       </>
