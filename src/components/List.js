@@ -32,7 +32,7 @@ const List = ({ status, isSearchActive, popularRecipes, search }) => {
           {!isSearchActive && (
             <h3 className="container-title">Popular recipes</h3>
           )}
-          <div className="is-flex">
+          <div className="is-flex has-dynamic-height">
             {renderList()}
           </div>
 

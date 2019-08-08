@@ -20,12 +20,28 @@
 
   &-lactose {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem;
+    top: 0;
+    right: 0;
     color: $white-color;
-    border-radius: $default-radius;
     background-color: $secondary-color;
+    width: 100px;
+    height: 100px;
+    clip-path: polygon(50% 0%, 100% 50%, 100% 100%, 0% 0%);
+
+    &-text {
+      position: absolute;
+      top: 30%;
+      right: 0%;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 0.875rem;
+      margin-left: 0.5rem;
+      transform: rotate(45deg);
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
   }
 
   &-info {

@@ -3,6 +3,11 @@ import React from 'react'
 // Helpers
 import { hasRecipeLactose, openNewTab } from '../helpers/index'
 
+const renderIngredients = ingredients => {
+  ingredients = ingredients.split(', ')
+  return ingredients.map(ingredient => <li>{ingredient}</li>)
+}
+
 const Card = ({ recipe }) => {
   return (
     <article
@@ -15,11 +20,17 @@ const Card = ({ recipe }) => {
         alt={recipe.title}
       />
       {hasRecipeLactose(recipe) && (
-        <div className="card-lactose">Has lactose</div>
+        <div className="card-lactose">
+          <div className="card-lactose-text">
+            <i className="fas fa-cheese"></i>Lactose
+          </div>
+        </div>
       )}
       <div className="card-info">
         <h3 className="card-title">{recipe.title}</h3>
-        <p className="card-ingredients">{recipe.ingredients}</p>
+        <ul className="card-ingredients">
+          {renderIngredients(recipe.ingredients)}
+        </ul>
       </div>
     </article>
   )
