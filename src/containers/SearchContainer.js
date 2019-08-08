@@ -18,7 +18,7 @@ class SearchContainer extends Component {
     const { handleStatus, handleSearch, handleSearchActive } = this.props
     const { inputSearch } = this.state
     event.preventDefault()
-    // Only search recipes when searchbar is more than 3 characters.
+    // Only search recipes when search bar is more than 3 characters.
     if (inputSearch.length > 3) {
       // TODO: Refactor less updade component!!
       try {
@@ -26,6 +26,7 @@ class SearchContainer extends Component {
         // API call to search recipes by ingredient.
         const search = await recipeService.getRecipesByKeyword(inputSearch)
         // Save search result
+        console.log(search)
         handleSearch(search.results)
         // Set true to isSearchActive state.
         handleSearchActive(true)

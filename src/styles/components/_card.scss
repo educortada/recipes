@@ -12,15 +12,25 @@
 
   &-img {
     width: 100%;
+    height: 250px;
     border-radius: $default-radius $default-radius 0 0;
+  }
+
+  &-lactose {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem;
+    border-radius: $default-radius;
+    background-color: $secondary-color;
   }
 
   &-info {
     padding: 1rem;
+    color: $text-color;
   }
 
   &-title {
-    color: $text-color;
     padding-bottom: 0.5rem;
   }
 
