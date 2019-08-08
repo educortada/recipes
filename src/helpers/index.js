@@ -8,3 +8,8 @@ export const hasRecipeLactose = recipe => {
 
   return foundLactose.length !== 0
 }
+
+// Open URL as a new tab.
+export const openNewTab = href => {
+  window.open(href, '_blank')
+}

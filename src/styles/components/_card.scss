@@ -5,10 +5,12 @@
   flex-wrap: wrap;
   flex-basis: calc(100% - 1rem);
   margin: 1rem 0.5rem;
+  color: $text-color;
   background-color: $white-color;
   border-radius: $default-radius;
   box-shadow: $box-shadow-light;
   transition: $transition;
+  cursor: pointer;
 
   &-img {
     width: 100%;
@@ -21,13 +23,13 @@
     top: 1rem;
     right: 1rem;
     padding: 0.25rem;
+    color: $white-color;
     border-radius: $default-radius;
     background-color: $secondary-color;
   }
 
   &-info {
     padding: 1rem;
-    color: $text-color;
   }
 
   &-title {

@@ -16,7 +16,7 @@ const Search = ({ inputSearch, handleChangeInput, handleSubmit, handleSearchActi
           className="search-input"
           onChange={handleChangeInput}
           value={inputSearch}
-          placeholder="Search recipes..."
+          placeholder="Ingredients..."
         />
         {(inputSearch.length > 0) && (
           <button
