@@ -11,7 +11,10 @@ import recipeService from '../services/recipeService'
 import { parseInputSearch } from '../helpers/index'
 
 class SearchContainer extends Component {
-  state = { inputSearch: '' }
+  state = {
+    inputSearch: '',
+    searchHistory: []
+  }
 
   handleChangeInput = (event) => {
     this.setState({ inputSearch: event.target.value })
@@ -19,7 +22,7 @@ class SearchContainer extends Component {
 
   handleSubmit = async (event) => {
     const { handleStatus, handleSearch, handleSearchActive } = this.props
-    const { inputSearch } = this.state
+    const { inputSearch, searchHistory } = this.state
     event.preventDefault()
     // Only search recipes when search bar is more than 3 characters.
     if (inputSearch.length > 3) {
@@ -29,8 +32,10 @@ class SearchContainer extends Component {
         // API call to search recipes by ingredient.
         const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
         // Save search result
-        console.log(search)
         handleSearch(search.results)
+        this.setState({
+          searchHistory: [...searchHistory, inputSearch]
+        })
         // Set true to isSearchActive state.
         handleSearchActive(true)
         handleStatus(IS_READY)
@@ -41,7 +46,7 @@ class SearchContainer extends Component {
   }
 
   render () {
-    const { inputSearch } = this.state
+    const { inputSearch, searchHistory } = this.state
     return (
       <Search
         inputSearch={inputSearch}
@@ -49,6 +54,7 @@ class SearchContainer extends Component {
         handleSubmit={this.handleSubmit}
         handleSearchActive={this.props.handleSearchActive}
         resetInputSearch={() => this.setState({ inputSearch: '' })}
+        searchHistory={searchHistory}
       />
     )
   }

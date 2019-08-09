@@ -22,7 +22,6 @@ class Home extends Component {
         status: IS_READY,
         popularRecipes: popularRecipes.results
       })
-      console.log(popularRecipes.results)
     } catch (error) {
       this.setState({ status: HAS_ERROR })
       console.log(error)

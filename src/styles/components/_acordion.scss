@@ -21,5 +21,21 @@
     border-radius: $default-radius;
     background: $gray-color-04;
     box-shadow: $box-shadow-dark;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: $gray-color-01;
+    }
   }
 }
