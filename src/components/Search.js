@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Components
+import Acordion from '../components/Acordion'
+
 const Search = ({ inputSearch, handleChangeInput, handleSubmit, handleSearchActive, resetInputSearch }) => {
   const handleClick = () => {
     // Set false to isSearchActive state.
@@ -33,6 +36,7 @@ const Search = ({ inputSearch, handleChangeInput, handleSubmit, handleSearchActi
         <i className="search-tooltip-icon fas fa-info-circle"></i>
         <p className="search-tooltip-text">You can search multiple ingredients separated by space.</p>
       </div>
+      <Acordion />
     </section>
   )
 }

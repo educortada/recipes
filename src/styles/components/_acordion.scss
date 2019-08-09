@@ -1,0 +1,25 @@
+.acordion {
+  padding: 0 0 1rem 0.5rem;
+  max-width: 250px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: $primary-color;
+    border-radius: $default-radius;
+    color: $white-color;
+    box-shadow: $box-shadow-dark;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &-content {
+    padding: 0.5rem 1rem;
+    margin-top: 0.75rem;
+    border-radius: $default-radius;
+    background: $gray-color-04;
+    box-shadow: $box-shadow-dark;
+  }
+}

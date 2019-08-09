@@ -14,6 +14,7 @@ export const openNewTab = href => {
   window.open(href, '_blank')
 }
 
+// Parse multiple ingredient by comma delimiter.
 export const parseInputSearch = inputSearch => (
   inputSearch.split(' ').join(',')
 )
