@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { IS_LOADING, IS_READY, HAS_ERROR } from '../constants/index'
+import uuidv1 from 'uuid/v1'
 
 // Components
 import Search from '../components/Search'
@@ -34,7 +35,7 @@ class SearchContainer extends Component {
         // Save search result
         handleSearch(search.results)
         this.setState({
-          searchHistory: [...searchHistory, inputSearch]
+          searchHistory: [...searchHistory, { uuid: uuidv1(), inputSearch }]
         })
         // Set true to isSearchActive state.
         handleSearchActive(true)
@@ -43,6 +44,10 @@ class SearchContainer extends Component {
         handleStatus(HAS_ERROR)
       }
     }
+  }
+
+  handleDeleteSearchHistory = (searchHistory) => {
+    this.setState({ searchHistory: [...searchHistory] })
   }
 
   render () {
@@ -55,6 +60,7 @@ class SearchContainer extends Component {
         handleSearchActive={this.props.handleSearchActive}
         resetInputSearch={() => this.setState({ inputSearch: '' })}
         searchHistory={searchHistory}
+        handleDeleteSearchHistory={this.handleDeleteSearchHistory}
       />
     )
   }

@@ -1,6 +1,15 @@
 import React from 'react'
+import uuidv1 from 'uuid/v1'
 
-const Acordion = ({ isOpen, handletToggle, searchHistory }) => {
+const Acordion = ({ isOpen, handletToggle, searchHistory, handleDeleteSearchHistory }) => {
+  // Remove clicked item from the search list.
+  const handleDelete = (currentItemUuid) => {
+    const result = searchHistory.filter(item => {
+      return item.uuid !== currentItemUuid
+    })
+    handleDeleteSearchHistory(result)
+  }
+
   return (
     <div className="acordion">
       <div
@@ -16,10 +25,10 @@ const Acordion = ({ isOpen, handletToggle, searchHistory }) => {
         <div className="acordion-content">
           <ul>
             {searchHistory.length
-              ? searchHistory.map(search => (
-                <li className="acordion-content-item">
-                  <span>{search}</span>
-                  <button>
+              ? searchHistory.map(item => (
+                <li key={uuidv1()} className="acordion-content-item">
+                  <span>{item.inputSearch}</span>
+                  <button onClick={() => handleDelete(item.uuid)}>
                     <i className="fas fa-times-circle"></i>
                   </button>
                 </li>

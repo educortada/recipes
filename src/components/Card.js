@@ -1,11 +1,14 @@
 import React from 'react'
+import uuidv1 from 'uuid/v1'
 
 // Helpers
 import { hasRecipeLactose, openNewTab } from '../helpers/index'
 
 const renderIngredients = ingredients => {
   ingredients = ingredients.split(', ')
-  return ingredients.map(ingredient => <li>{ingredient}</li>)
+  return ingredients.map(ingredient => (
+    <li key={uuidv1()}>{ingredient}</li>
+  ))
 }
 
 const Card = ({ recipe }) => {

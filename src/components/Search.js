@@ -9,7 +9,8 @@ const Search = ({
   handleSubmit,
   handleSearchActive,
   resetInputSearch,
-  searchHistory
+  searchHistory,
+  handleDeleteSearchHistory
 }) => {
   const handleClick = () => {
     // Set false to isSearchActive state.
@@ -45,6 +46,7 @@ const Search = ({
       </div>
       <AcordionContainer
         searchHistory={searchHistory}
+        handleDeleteSearchHistory={handleDeleteSearchHistory}
       />
     </section>
   )

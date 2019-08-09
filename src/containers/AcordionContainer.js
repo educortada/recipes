@@ -13,12 +13,13 @@ class AcordionContainer extends Component {
 
   render () {
     const { isOpen } = this.state
-    const { searchHistory } = this.props
+    const { searchHistory, handleDeleteSearchHistory } = this.props
     return (
       <Acordion
         isOpen={isOpen}
         handletToggle={this.handletToggle}
         searchHistory={searchHistory}
+        handleDeleteSearchHistory={handleDeleteSearchHistory}
       />
     )
   }
