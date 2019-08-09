@@ -62,4 +62,17 @@
     left: 1.5rem;
     transform: translateY(-50%);
   }
+
+  &-tooltip {
+    display: flex;
+    align-items: center;
+    color: $gray-color-01;
+    font-size: 0.875rem;
+    padding: 0 0 1rem 0.5rem;
+
+    &-text {
+      padding-left: 0.5rem;
+      line-height: 1rem;
+    }
+  }
 }

@@ -7,6 +7,9 @@ import Search from '../components/Search'
 // Services
 import recipeService from '../services/recipeService'
 
+// Helpers
+import { parseInputSearch } from '../helpers/index'
+
 class SearchContainer extends Component {
   state = { inputSearch: '' }
 
@@ -24,7 +27,7 @@ class SearchContainer extends Component {
       try {
         handleStatus(IS_LOADING)
         // API call to search recipes by ingredient.
-        const search = await recipeService.getRecipesByKeyword(inputSearch)
+        const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
         // Save search result
         console.log(search)
         handleSearch(search.results)

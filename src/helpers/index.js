@@ -13,3 +13,7 @@ export const hasRecipeLactose = recipe => {
 export const openNewTab = href => {
   window.open(href, '_blank')
 }
+
+export const parseInputSearch = inputSearch => (
+  inputSearch.split(' ').join(',')
+)

@@ -3,6 +3,7 @@ import { IS_LOADING, IS_READY, HAS_ERROR } from '../constants/index'
 import recipeService from '../services/recipeService'
 
 // Components
+import Navbar from '../components/Navbar'
 import List from '../components/List'
 import SearchContainer from '../containers/SearchContainer'
 
@@ -37,6 +38,7 @@ class Home extends Component {
     } = this.state
     return (
       <>
+        <Navbar />
         <main>
           <SearchContainer
             handleStatus={(status) => { this.setState({ status }) }}

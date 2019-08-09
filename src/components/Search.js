@@ -29,6 +29,10 @@ const Search = ({ inputSearch, handleChangeInput, handleSubmit, handleSearchActi
         )}
         <button className="search-button" type="submit">Search</button>
       </form>
+      <div className="search-tooltip">
+        <i className="search-tooltip-icon fas fa-info-circle"></i>
+        <p className="search-tooltip-text">You can search multiple ingredients separated by space.</p>
+      </div>
     </section>
   )
 }
