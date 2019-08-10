@@ -1,16 +1,21 @@
 .acordion {
-  padding: 0 0 1rem 0.5rem;
-  max-width: 250px;
+  width: 250px;
+  margin-bottom: 1rem;
+
+  @media (min-width: $tablet-width) {
+    margin-bottom: 0;
+  }
 
   &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
-    background: $primary-color;
+    background: $white-color;
     border-radius: $default-radius;
-    color: $white-color;
-    box-shadow: $box-shadow-dark;
+    border: 1px solid $gray-color-03;
+    color: $text-color;
+    box-shadow: $box-shadow-light;
     font-weight: 600;
     cursor: pointer;
   }
@@ -19,14 +24,21 @@
     padding: 0.5rem 1rem;
     margin-top: 0.75rem;
     border-radius: $default-radius;
-    background: $gray-color-04;
-    box-shadow: $box-shadow-dark;
+    border: 1px solid $gray-color-03;
+    background: $white-color;
+    box-shadow: $box-shadow-light;
+  }
 
-    &-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.25rem 0;
+    font-weight: 600;
+    color: $gray-color-01;
+
+    &-text {
+      width: 100%;
       cursor: pointer;
     }
 

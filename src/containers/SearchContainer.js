@@ -46,6 +46,24 @@ class SearchContainer extends Component {
     }
   }
 
+  // TODO: Don't repeat myself.
+  handleSearch = async (inputSearch) => {
+    const { handleStatus, handleSearch, handleSearchActive } = this.props
+    // TODO: Refactor less updade component!!
+    try {
+      handleStatus(IS_LOADING)
+      // API call to search recipes by ingredient.
+      const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
+      // Save search result
+      handleSearch(search.results)
+      // Set true to isSearchActive state.
+      handleSearchActive(true)
+      handleStatus(IS_READY)
+    } catch (error) {
+      handleStatus(HAS_ERROR)
+    }
+  }
+
   handleDeleteSearchHistory = (searchHistory) => {
     this.setState({ searchHistory: [...searchHistory] })
   }
@@ -61,6 +79,7 @@ class SearchContainer extends Component {
         resetInputSearch={() => this.setState({ inputSearch: '' })}
         searchHistory={searchHistory}
         handleDeleteSearchHistory={this.handleDeleteSearchHistory}
+        handleSearch={this.handleSearch}
       />
     )
   }

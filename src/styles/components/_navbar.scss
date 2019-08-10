@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: $secondary-color;
+  background-color: $white-color;
   box-shadow: $box-shadow-light;
   z-index: 1;
 
@@ -16,9 +16,11 @@
     align-items: center;
     padding: 0.75rem 1.5rem;
     font-size: 1.5rem;
+    color: $primary-color;
 
     &-icon {
       margin-right: 0.75rem;
+      color: $secondary-color;
     }
   }
 }

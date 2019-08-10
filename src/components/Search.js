@@ -10,7 +10,8 @@ const Search = ({
   handleSearchActive,
   resetInputSearch,
   searchHistory,
-  handleDeleteSearchHistory
+  handleDeleteSearchHistory,
+  handleSearch
 }) => {
   const handleClick = () => {
     // Set false to isSearchActive state.
@@ -40,14 +41,17 @@ const Search = ({
         )}
         <button className="search-button" type="submit">Search</button>
       </form>
-      <div className="search-tooltip">
-        <i className="search-tooltip-icon fas fa-info-circle"></i>
-        <p className="search-tooltip-text">You can search multiple ingredients separated by space.</p>
+      <div className="search-options">
+        <AcordionContainer
+          searchHistory={searchHistory}
+          handleDeleteSearchHistory={handleDeleteSearchHistory}
+          handleSearch={handleSearch}
+        />
+        <div className="search-tooltip">
+          <i className="search-tooltip-icon fas fa-info-circle"></i>
+          <p className="search-tooltip-text">Search multiple ingredients separated by space.</p>
+        </div>
       </div>
-      <AcordionContainer
-        searchHistory={searchHistory}
-        handleDeleteSearchHistory={handleDeleteSearchHistory}
-      />
     </section>
   )
 }
