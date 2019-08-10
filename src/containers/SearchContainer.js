@@ -27,17 +27,18 @@ class SearchContainer extends Component {
     event.preventDefault()
     // Only search recipes when search bar is more than 3 characters.
     if (inputSearch.length > 3) {
-      // TODO: Refactor less updade component!!
+      // TODO: Refactor with less component updates.
       try {
         handleStatus(IS_LOADING)
-        // API call to search recipes by ingredient.
         const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
         // Save search result
         handleSearch(search.results)
         this.setState({
-          searchHistory: [...searchHistory, { uuid: uuidv1(), inputSearch }]
+          searchHistory: [
+            ...searchHistory,
+            { uuid: uuidv1(), inputSearch }
+          ]
         })
-        // Set true to isSearchActive state.
         handleSearchActive(true)
         handleStatus(IS_READY)
       } catch (error) {
@@ -49,14 +50,10 @@ class SearchContainer extends Component {
   // TODO: Don't repeat myself.
   handleSearch = async (inputSearch) => {
     const { handleStatus, handleSearch, handleSearchActive } = this.props
-    // TODO: Refactor less updade component!!
     try {
       handleStatus(IS_LOADING)
-      // API call to search recipes by ingredient.
       const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
-      // Save search result
       handleSearch(search.results)
-      // Set true to isSearchActive state.
       handleSearchActive(true)
       handleStatus(IS_READY)
     } catch (error) {
@@ -68,18 +65,22 @@ class SearchContainer extends Component {
     this.setState({ searchHistory: [...searchHistory] })
   }
 
+  resetInputSearch = () => {
+    this.setState({ inputSearch: '' })
+  }
+
   render () {
     const { inputSearch, searchHistory } = this.state
     return (
       <Search
-        inputSearch={inputSearch}
         handleChangeInput={this.handleChangeInput}
-        handleSubmit={this.handleSubmit}
-        handleSearchActive={this.props.handleSearchActive}
-        resetInputSearch={() => this.setState({ inputSearch: '' })}
-        searchHistory={searchHistory}
         handleDeleteSearchHistory={this.handleDeleteSearchHistory}
         handleSearch={this.handleSearch}
+        handleSearchActive={this.props.handleSearchActive}
+        handleSubmit={this.handleSubmit}
+        inputSearch={inputSearch}
+        resetInputSearch={this.resetInputSearch}
+        searchHistory={searchHistory}
       />
     )
   }

@@ -4,14 +4,14 @@ import React from 'react'
 import AcordionContainer from '../containers/AcordionContainer'
 
 const Search = ({
-  inputSearch,
   handleChangeInput,
-  handleSubmit,
-  handleSearchActive,
-  resetInputSearch,
-  searchHistory,
   handleDeleteSearchHistory,
-  handleSearch
+  handleSearch,
+  handleSearchActive,
+  handleSubmit,
+  inputSearch,
+  resetInputSearch,
+  searchHistory
 }) => {
   const handleClick = () => {
     // Set false to isSearchActive state.
@@ -43,9 +43,9 @@ const Search = ({
       </form>
       <div className="search-options">
         <AcordionContainer
-          searchHistory={searchHistory}
           handleDeleteSearchHistory={handleDeleteSearchHistory}
           handleSearch={handleSearch}
+          searchHistory={searchHistory}
         />
         <div className="search-tooltip">
           <i className="search-tooltip-icon fas fa-info-circle"></i>

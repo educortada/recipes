@@ -20,11 +20,11 @@ class AcordionContainer extends Component {
     } = this.props
     return (
       <Acordion
-        isOpen={isOpen}
-        handletToggle={this.handletToggle}
-        searchHistory={searchHistory}
         handleDeleteSearchHistory={handleDeleteSearchHistory}
         handleSearch={handleSearch}
+        handletToggle={this.handletToggle}
+        isOpen={isOpen}
+        searchHistory={searchHistory}
       />
     )
   }

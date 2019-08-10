@@ -28,6 +28,18 @@ class Home extends Component {
     }
   }
 
+  handleStatus = (status) => {
+    this.setState({ status })
+  }
+
+  handleSearch = (search) => {
+    this.setState({ search })
+  }
+
+  handleSearchActive = (isSearchActive) => {
+    this.setState({ isSearchActive })
+  }
+
   render () {
     const {
       isSearchActive,
@@ -40,9 +52,9 @@ class Home extends Component {
         <Navbar />
         <main>
           <SearchContainer
-            handleStatus={(status) => { this.setState({ status }) }}
-            handleSearch={(search) => { this.setState({ search }) }}
-            handleSearchActive={(isSearchActive) => { this.setState({ isSearchActive }) }}
+            handleSearch={this.handleSearch}
+            handleSearchActive={this.handleSearchActive}
+            handleStatus={this.handleStatus}
           />
           <List
             isSearchActive={isSearchActive}

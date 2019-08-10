@@ -2,11 +2,11 @@ import React from 'react'
 import uuidv1 from 'uuid/v1'
 
 const Acordion = ({
-  isOpen,
-  handletToggle,
-  searchHistory,
   handleDeleteSearchHistory,
-  handleSearch
+  handleSearch,
+  handletToggle,
+  isOpen,
+  searchHistory
 }) => {
   // Remove clicked item from the search list.
   const handleDelete = (currentItemUuid) => {
