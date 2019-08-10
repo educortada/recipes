@@ -18,3 +18,8 @@ export const openNewTab = href => {
 export const parseInputSearch = inputSearch => (
   inputSearch.split(' ').join(',')
 )
+
+// Extracts a section of a text and returns it with the length.
+export const sliceText = (text, length) => {
+  return `${text.slice(0, length)}...`
+}

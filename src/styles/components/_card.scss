@@ -45,8 +45,17 @@
     }
   }
 
-  &-info {
+  &-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 1rem;
+  }
+
+  &-favorite-btn {
+    color: $favorite-color;
+    font-size: 1.5rem;
+    border: 0;
   }
 
   &-title {

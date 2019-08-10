@@ -1,5 +1,7 @@
 import React from 'react'
 import uuidv1 from 'uuid/v1'
+import { connect } from 'react-redux'
+import { addFavorite } from '../actions/addFavorite'
 
 // Helpers
 import { hasRecipeLactose, openNewTab } from '../helpers/index'
@@ -11,7 +13,7 @@ const renderIngredients = ingredients => {
   ))
 }
 
-const Card = ({ recipe }) => {
+const ConnectedCard = ({ recipe, addFavorite }) => {
   return (
     <article
       className="card"
@@ -29,14 +31,34 @@ const Card = ({ recipe }) => {
           </div>
         </div>
       )}
-      <div className="card-info">
-        <h3 className="card-title">{recipe.title}</h3>
-        <ul className="card-ingredients">
-          {renderIngredients(recipe.ingredients)}
-        </ul>
+      <div className="card-content">
+        <div className="card-info">
+          <h3 className="card-title">{recipe.title}</h3>
+          <ul className="card-ingredients">
+            {renderIngredients(recipe.ingredients)}
+          </ul>
+        </div>
+        <div className="card-favorite">
+          <button
+            className="card-favorite-btn"
+            onClick={(event) => {
+              event.stopPropagation()
+              addFavorite(recipe)
+            }}
+          >
+            <i className="far fa-heart"></i>
+          </button>
+        </div>
       </div>
     </article>
   )
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addFavorite: (recipe) => dispatch(addFavorite(recipe))
+  }
+}
+
+const Card = connect(null, mapDispatchToProps)(ConnectedCard)
 export default Card
