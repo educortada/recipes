@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 
 // Pages
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 
 // CSS
 import './styles/main.scss'
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path='/' component={Home} />
+      <Route component={NotFound} />
     </Switch>
   )
 }
