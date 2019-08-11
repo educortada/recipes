@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { IS_LOADING, IS_READY, HAS_ERROR } from '../constants/index'
 import recipeService from '../services/recipeService'
+import uuidv1 from 'uuid/v1'
 
 // Components
 import Navbar from '../components/Navbar'
@@ -17,10 +18,14 @@ class Home extends Component {
 
   componentDidMount = async () => {
     try {
-      const popularRecipes = await recipeService.getPopularRecipes()
+      let popularRecipes = await recipeService.getPopularRecipes()
+      // Add UUID for each recipe
+      popularRecipes = popularRecipes.results.map(recipe => {
+        return { ...recipe, uuid: uuidv1() }
+      })
       this.setState({
         status: IS_READY,
-        popularRecipes: popularRecipes.results
+        popularRecipes
       })
     } catch (error) {
       this.setState({ status: HAS_ERROR })

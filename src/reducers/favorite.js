@@ -1,5 +1,4 @@
 import { ADD_FAVORITE, REMOVE_FAVORITE } from '../constants/action-types'
-import uuidv1 from 'uuid/v1'
 
 const initialState = { favorites: [] }
 
@@ -11,7 +10,7 @@ const favorite = (state = initialState, action) => {
         favorites: [
           ...state.favorites,
           {
-            uuid: uuidv1(),
+            uuid: action.recipe.uuid,
             title: action.recipe.title,
             href: action.recipe.href
           }

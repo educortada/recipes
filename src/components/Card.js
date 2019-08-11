@@ -2,6 +2,7 @@ import React from 'react'
 import uuidv1 from 'uuid/v1'
 import { connect } from 'react-redux'
 import { addFavorite } from '../actions/addFavorite'
+import { removeFavorite } from '../actions/removeFavorite'
 
 // Helpers
 import { hasRecipeLactose, openNewTab } from '../helpers/index'
@@ -13,10 +14,24 @@ const renderIngredients = ingredients => {
   ))
 }
 
-const ConnectedCard = ({ recipe, addFavorite }) => {
+const ConnectedCard = ({
+  addFavorite,
+  favorites,
+  recipe,
+  removeFavorite
+}) => {
+  const isFavorite = () => {
+    return favorites.find(favorite => {
+      return favorite.uuid === recipe.uuid
+    })
+  }
   const handleClick = event => {
     event.stopPropagation()
-    addFavorite(recipe)
+    if (isFavorite()) {
+      removeFavorite(recipe.uuid)
+    } else {
+      addFavorite(recipe)
+    }
   }
   return (
     <article
@@ -47,7 +62,9 @@ const ConnectedCard = ({ recipe, addFavorite }) => {
             className="card-favorite-btn"
             onClick={(event) => { handleClick(event) }}
           >
-            <i className="far fa-heart"></i>
+            {isFavorite()
+              ? <i className="fas fa-heart"></i>
+              : <i className="far fa-heart"></i>}
           </button>
         </div>
       </div>
@@ -55,11 +72,16 @@ const ConnectedCard = ({ recipe, addFavorite }) => {
   )
 }
 
+const mapStateToProps = state => {
+  return { favorites: state.favorites }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFavorite: (recipe) => dispatch(addFavorite(recipe))
+    addFavorite: (recipe) => dispatch(addFavorite(recipe)),
+    removeFavorite: (uuid) => dispatch(removeFavorite(uuid))
   }
 }
 
-const Card = connect(null, mapDispatchToProps)(ConnectedCard)
+const Card = connect(mapStateToProps, mapDispatchToProps)(ConnectedCard)
 export default Card

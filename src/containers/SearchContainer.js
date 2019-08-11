@@ -30,9 +30,13 @@ class SearchContainer extends Component {
       // TODO: Refactor with less component updates.
       try {
         handleStatus(IS_LOADING)
-        const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
+        let search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
+        // Add UUID for each recipe
+        search = search.results.map(recipe => {
+          return { ...recipe, uuid: uuidv1() }
+        })
         // Save search result
-        handleSearch(search.results)
+        handleSearch(search)
         this.setState({
           searchHistory: [
             ...searchHistory,
@@ -52,8 +56,13 @@ class SearchContainer extends Component {
     const { handleStatus, handleSearch, handleSearchActive } = this.props
     try {
       handleStatus(IS_LOADING)
-      const search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
-      handleSearch(search.results)
+      let search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
+      // Add UUID for each recipe
+      search = search.results.map(recipe => {
+        return { ...recipe, uuid: uuidv1() }
+      })
+      // Save search result
+      handleSearch(search)
       handleSearchActive(true)
       handleStatus(IS_READY)
     } catch (error) {
