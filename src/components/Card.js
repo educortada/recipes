@@ -14,6 +14,10 @@ const renderIngredients = ingredients => {
 }
 
 const ConnectedCard = ({ recipe, addFavorite }) => {
+  const handleClick = event => {
+    event.stopPropagation()
+    addFavorite(recipe)
+  }
   return (
     <article
       className="card"
@@ -41,10 +45,7 @@ const ConnectedCard = ({ recipe, addFavorite }) => {
         <div className="card-favorite">
           <button
             className="card-favorite-btn"
-            onClick={(event) => {
-              event.stopPropagation()
-              addFavorite(recipe)
-            }}
+            onClick={(event) => { handleClick(event) }}
           >
             <i className="far fa-heart"></i>
           </button>

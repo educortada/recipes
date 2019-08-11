@@ -1,14 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { removeFavorite } from '../actions/removeFavorite'
+import uuidv1 from 'uuid/v1'
 
 // Helpers
-import { sliceText } from '../helpers'
+import { sliceText, openNewTab } from '../helpers'
 
 const ConnectedFavorite = ({
   favorites,
   handleFavoriteActive,
-  isFavoriteActive
+  isFavoriteActive,
+  removeFavorite
 }) => {
+  const handleRemove = (event, uuid) => {
+    event.stopPropagation()
+    removeFavorite(uuid)
+  }
   return (
     <div className="favorite">
       <button
@@ -24,10 +31,15 @@ const ConnectedFavorite = ({
             (favorites.length > 0)
               ? favorites.map(favorite => {
                 return (
-                  <li className="favorite-dropdown-item">
+                  <li
+                    key={uuidv1()}
+                    className="favorite-dropdown-item"
+                    onClick={() => openNewTab(favorite.href)}
+                  >
                     <p>{sliceText(favorite.title, 24)}</p>
                     <button
                       className="favorite-dropdown-remove"
+                      onClick={(event) => handleRemove(event, favorite.uuid)}
                     >
                       <i className="fas fa-times"></i>
                     </button>
@@ -46,6 +58,12 @@ const mapStateToProps = state => {
   return { favorites: state.favorites }
 }
 
-const Favorite = connect(mapStateToProps)(ConnectedFavorite)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeFavorite: (uuid) => dispatch(removeFavorite(uuid))
+  }
+}
+
+const Favorite = connect(mapStateToProps, mapDispatchToProps)(ConnectedFavorite)
 
 export default Favorite
