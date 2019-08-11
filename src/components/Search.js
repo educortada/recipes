@@ -6,7 +6,7 @@ import AcordionContainer from '../containers/AcordionContainer'
 const Search = ({
   handleChangeInput,
   handleDeleteSearchHistory,
-  handleSearch,
+  handleSearchHistory,
   handleSearchActive,
   handleSubmit,
   inputSearch,
@@ -44,7 +44,7 @@ const Search = ({
       <div className="search-options">
         <AcordionContainer
           handleDeleteSearchHistory={handleDeleteSearchHistory}
-          handleSearch={handleSearch}
+          handleSearchHistory={handleSearchHistory}
           searchHistory={searchHistory}
         />
         <div className="search-tooltip">

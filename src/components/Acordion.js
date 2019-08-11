@@ -2,7 +2,7 @@ import React from 'react'
 
 const Acordion = ({
   handleDeleteSearchHistory,
-  handleSearch,
+  handleSearchHistory,
   handletToggle,
   isOpen,
   searchHistory
@@ -37,7 +37,7 @@ const Acordion = ({
                 >
                   <div
                     className="acordion-item-text"
-                    onClick={() => handleSearch(item.inputSearch)}
+                    onClick={() => handleSearchHistory(item.inputSearch)}
                   >
                     {item.inputSearch}
                   </div>

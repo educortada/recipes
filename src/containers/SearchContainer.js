@@ -21,14 +21,16 @@ class SearchContainer extends Component {
     this.setState({ inputSearch: event.target.value })
   }
 
-  handleSubmit = async (event) => {
-    const { handleStatus, handleSearch, handleSearchActive } = this.props
-    const { inputSearch, searchHistory } = this.state
-    event.preventDefault()
-    // Only search recipes when search bar is more than 3 characters.
-    if (inputSearch.length > 3) {
-      // TODO: Refactor with less component updates.
-      try {
+  handleSearchApiCall = async (inputSearch) => {
+    const { searchHistory } = this.state
+    const {
+      handleSearch,
+      handleSearchActive,
+      handleStatus
+    } = this.props
+    try {
+      // Only search recipes when search bar has more than 3 characters.
+      if (inputSearch.length > 3) {
         handleStatus(IS_LOADING)
         let search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
         // Add UUID for each recipe
@@ -45,29 +47,20 @@ class SearchContainer extends Component {
         })
         handleSearchActive(true)
         handleStatus(IS_READY)
-      } catch (error) {
-        handleStatus(HAS_ERROR)
       }
-    }
-  }
-
-  // TODO: Don't repeat myself.
-  handleSearch = async (inputSearch) => {
-    const { handleStatus, handleSearch, handleSearchActive } = this.props
-    try {
-      handleStatus(IS_LOADING)
-      let search = await recipeService.getRecipesByKeyword(parseInputSearch(inputSearch))
-      // Add UUID for each recipe
-      search = search.results.map(recipe => {
-        return { ...recipe, uuid: uuidv1() }
-      })
-      // Save search result
-      handleSearch(search)
-      handleSearchActive(true)
-      handleStatus(IS_READY)
     } catch (error) {
       handleStatus(HAS_ERROR)
     }
+  }
+
+  handleSubmit = (event) => {
+    const { inputSearch } = this.state
+    event.preventDefault()
+    this.handleSearchApiCall(inputSearch)
+  }
+
+  handleSearchHistory = (inputSearch) => {
+    this.handleSearchApiCall(inputSearch)
   }
 
   handleDeleteSearchHistory = (searchHistory) => {
@@ -84,7 +77,7 @@ class SearchContainer extends Component {
       <Search
         handleChangeInput={this.handleChangeInput}
         handleDeleteSearchHistory={this.handleDeleteSearchHistory}
-        handleSearch={this.handleSearch}
+        handleSearchHistory={this.handleSearchHistory}
         handleSearchActive={this.props.handleSearchActive}
         handleSubmit={this.handleSubmit}
         inputSearch={inputSearch}
