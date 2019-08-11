@@ -1,6 +1,5 @@
 import React from 'react'
 import { IS_LOADING, IS_READY, HAS_ERROR } from '../constants/index'
-import uuidv1 from 'uuid/v1'
 
 // Components
 import Card from './Card'
@@ -15,7 +14,7 @@ const List = ({ status, isSearchActive, popularRecipes, search }) => {
     // Render search or popular recipes.
     return recipes.map(recipe => (
       <Card
-        key={uuidv1()}
+        key={recipe.uuid}
         recipe={recipe}
       />
     ))

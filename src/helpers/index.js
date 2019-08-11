@@ -3,7 +3,7 @@ export const hasRecipeLactose = recipe => {
   const ingredients = recipe.ingredients.split(', ')
   // Find all ingredients that contain lactose.
   const foundLactose = ingredientsWithLactose.filter(ingredientWithLactose => {
-    return ingredients.includes(ingredientWithLactose.toLocaleLowerCase())
+    return ingredients.includes(ingredientWithLactose)
   })
 
   return foundLactose.length !== 0
@@ -21,5 +21,9 @@ export const parseInputSearch = inputSearch => (
 
 // Extracts a section of a text and returns it with the length.
 export const sliceText = (text, length) => {
-  return `${text.slice(0, length)}...`
+  if (text.length > length) {
+    return `${text.slice(0, length)}...`
+  } else {
+    return text
+  }
 }

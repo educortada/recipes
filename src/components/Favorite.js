@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { removeFavorite } from '../actions/removeFavorite'
-import uuidv1 from 'uuid/v1'
 
 // Helpers
 import { sliceText, openNewTab } from '../helpers'
@@ -32,11 +31,11 @@ const ConnectedFavorite = ({
               ? favorites.map(favorite => {
                 return (
                   <li
-                    key={uuidv1()}
+                    key={favorite.uuid}
                     className="favorite-dropdown-item"
                     onClick={() => openNewTab(favorite.href)}
                   >
-                    <p>{sliceText(favorite.title, 24)}</p>
+                    <p>{sliceText(favorite.title, 30)}</p>
                     <button
                       className="favorite-dropdown-remove"
                       onClick={(event) => handleRemove(event, favorite.uuid)}

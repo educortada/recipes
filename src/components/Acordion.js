@@ -1,5 +1,4 @@
 import React from 'react'
-import uuidv1 from 'uuid/v1'
 
 const Acordion = ({
   handleDeleteSearchHistory,
@@ -33,7 +32,7 @@ const Acordion = ({
             {searchHistory.length
               ? searchHistory.map(item => (
                 <li
-                  key={uuidv1()}
+                  key={item.uuid}
                   className="acordion-item"
                 >
                   <div
